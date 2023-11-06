@@ -9,6 +9,11 @@
     "permissions": ["alarms", "notifications"],
     "background": {
       "service_worker": "background.js"
+    },
+    "icons": {
+      "16": "images/icon.png",
+      "48": "images/icon.png",
+      "128": "images/icon.png"
     }
   }
   
