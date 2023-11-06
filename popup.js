@@ -1,7 +1,7 @@
 // Ensure the DOM content is loaded before trying to access the elements
 document.addEventListener('DOMContentLoaded', function() {
   let isRunning = false;
-  let pomodoroTime = 25 * 60; // 25 minutes
+  let pomodoroTime = 0.5 * 60; // 25 minutes
   let countdown;
 
   const toggleBtn = document.getElementById('toggle-btn');
@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
           isRunning = false;
           this.textContent = 'Start';
           //Trigger Chrome notification here
+          showNotification();
         }
       }, 1000);
     }
@@ -30,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   resetBtn.addEventListener('click', function() {
     clearInterval(countdown);
-    pomodoroTime = 25 * 60;
+    pomodoroTime = 0.5 * 60;
     displayTime(pomodoroTime);
     toggleBtn.textContent = 'Start';
     isRunning = false;
@@ -43,3 +44,13 @@ document.addEventListener('DOMContentLoaded', function() {
       `${minutes}:${remSeconds < 10 ? '0' : ''}${remSeconds}`;
   }
 });
+
+function showNotification() {
+    chrome.notifications.create('', {
+      title: 'Pomodoro Timer',
+      message: 'Time is up! Take a break!',
+      iconUrl: 'images/icon.png',
+      type: 'basic'
+    });
+  }
+  
