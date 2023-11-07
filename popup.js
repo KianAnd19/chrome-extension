@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
           this.textContent = 'Start';
           //Trigger Chrome notification here
           showNotification();
+          playSound();
         }
       }, 1000);
     }
@@ -52,5 +53,12 @@ function showNotification() {
       iconUrl: 'images/icon.png',
       type: 'basic'
     });
-  }
+}
+
+
+function playSound() {
+    let audio = new Audio('alarm.wav');
+    audio.play();
+}
+  
   
